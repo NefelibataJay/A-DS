@@ -1,4 +1,4 @@
-package classical_100.java;
+package classical_150.java;
 
 public class Solution28 {
     public static void main(String[] args) {
