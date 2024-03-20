@@ -1,4 +1,4 @@
-package classical_150.java;
+package classical_150.java.matrix;
 
 public class Solution36 {
     public static void main(String[] args) {

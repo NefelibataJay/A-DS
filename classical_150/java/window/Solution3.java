@@ -1,4 +1,4 @@
-package classical_150.java;
+package classical_150.java.window;
 
 public class Solution3 {
     public static void main(String[] args) {

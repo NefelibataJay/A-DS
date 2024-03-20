@@ -1,4 +1,4 @@
-package classical_150.java;
+package classical_150.java.pointer;
 
 import java.util.*;
 public class Solution15 {

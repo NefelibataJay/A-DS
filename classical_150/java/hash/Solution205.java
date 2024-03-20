@@ -1,4 +1,4 @@
-package classical_150.java;
+package classical_150.java.hash;
 
 import java.util.HashMap;
 import java.util.Map;

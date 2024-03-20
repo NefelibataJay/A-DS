@@ -1,4 +1,4 @@
-package classical_150.java;
+package classical_150.java.arrwithstr;
 
 public class Solution12 {
     private String getValue(int num) {
