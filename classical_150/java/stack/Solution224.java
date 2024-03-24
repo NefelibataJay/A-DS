@@ -4,7 +4,7 @@ import java.util.*;
 
 public class Solution224 {
     public static void main(String[] args) {
-        String s = "-(-11 + 2)";
+        String s = "(1+(4+5+2)-3)+(6+8)";
         Solution224 solution = new Solution224();
         System.out.println(solution.calculate1(s));
     }
@@ -72,7 +72,7 @@ public class Solution224 {
         int b = numStack.pop();
         int a = numStack.pop();
         String op = symbolStack.pop();
-        numStack.push(op == "+" ? a + b : a - b);
+        numStack.push(op.equals("+") ? a + b : a - b);
     }
 
     public int calculate(String s) {
