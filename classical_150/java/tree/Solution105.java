@@ -1,6 +1,8 @@
 package classical_150.java.tree;
 
+import java.util.Deque;
 import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.Map;
 
 public class Solution105 {
@@ -9,7 +11,7 @@ public class Solution105 {
         int[] preorder = { 3, 9, 20, 15, 7 };
         int[] inorder = { 9, 3, 15, 20, 7 };
         Solution105 solution = new Solution105();
-        solution.buildTree(preorder, inorder);
+        solution.buildTree1(preorder, inorder);
 
     }
 
@@ -21,7 +23,8 @@ public class Solution105 {
         int n = preorder.length;
         indexMap = new HashMap<Integer, Integer>();
         for (int i = 0; i < n; i++)
-            indexMap.put(inorder[i], i);
+            indexMap.put(inorder[i], i); // 记录该节点在 中序遍历中的下标
+        // 每次遍历定位 当前子树的下标区间
         return myBuildTree(preorder, inorder, 0, n - 1, 0, n - 1);
     }
 
@@ -52,6 +55,52 @@ public class Solution105 {
         // 先序遍历中「从 左边界+1+左子树节点数目 开始到 右边界」的元素就对应了中序遍历中「从 根节点定位+1 到 右边界」的元素
         root.right = myBuildTree(preorder, inorder, preorder_left + size_left_subtree + 1, preorder_right,
                 inorder_root + 1, inorder_right);
+        return root;
+    }
+
+    int pre_idx = 0;
+    int in_idx = 0;
+
+    public TreeNode buildTree2(int[] preorder, int[] inorder) {
+        return process(preorder, inorder, Integer.MAX_VALUE);
+    }
+
+    public TreeNode process(int[] pre, int[] in, int stop) {
+        if (pre_idx == pre.length)
+            return null;
+        if (in[in_idx] == stop) {
+            in_idx++;
+            return null;
+        }
+        TreeNode root = new TreeNode(pre[pre_idx++]);
+        root.left = process(pre, in, root.val);
+        root.right = process(pre, in, stop);
+        return root;
+    }
+
+    public TreeNode buildTree1(int[] preorder, int[] inorder) {
+        if (preorder == null || preorder.length == 0) {
+            return null;
+        }
+        TreeNode root = new TreeNode(preorder[0]); // 前序遍历的一个节点一定是根节点
+        Deque<TreeNode> stack = new LinkedList<TreeNode>();
+        stack.push(root);
+        int inorderIndex = 0;
+        for (int i = 1; i < preorder.length; i++) {
+            int preorderVal = preorder[i];
+            TreeNode node = stack.peek();
+            if (node.val != inorder[inorderIndex]) { // 如果当前中序遍历的节点不是根节点，一定是当前节点的左节点
+                node.left = new TreeNode(preorderVal);
+                stack.push(node.left);
+            } else {
+                while (!stack.isEmpty() && stack.peek().val == inorder[inorderIndex]) {
+                    node = stack.pop();
+                    inorderIndex++;
+                }
+                node.right = new TreeNode(preorderVal);
+                stack.push(node.right);
+            }
+        }
         return root;
     }
 }
