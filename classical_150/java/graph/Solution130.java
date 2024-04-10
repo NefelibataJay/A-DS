@@ -105,7 +105,7 @@ public class Solution130 {
 
         for (int r = 0; r < board.length; r++) {
             for (int c = 0; c < board[0].length; c++) {
-                if (board[r][c] == 'Y') // 从边界蔓延过来的岛
+                if (board[r][c] == 'A') // 从边界蔓延过来的岛
                     board[r][c] = 'O';
                 else if (board[r][c] == 'O') // 没有蔓延岛边界的岛，就是被海水包围的岛
                     board[r][c] = 'X';
