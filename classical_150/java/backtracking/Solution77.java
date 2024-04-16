@@ -87,17 +87,17 @@ public class Solution77 {
      * [2, 3, 5], [2, 4, 5], [3, 4, 5]]
      */
 
-    List<List<Integer>> ans = new ArrayList();
-    List<Integer> list = new ArrayList();
+    List<List<Integer>> ans = new ArrayList<>();
+    List<Integer> list = new ArrayList<>();
 
-    public List<List<Integer>> combine(int n, int k) {
+    public List<List<Integer>> combine1(int n, int k) {
         dfs(n, k);
         return ans;
     }
 
     public void dfs(int u, int k) {
         if (k == 0) {
-            ans.add(new ArrayList(list));
+            ans.add(new ArrayList<>(list));
             return;
         }
         for (int i = u; i >= k; --i) {
