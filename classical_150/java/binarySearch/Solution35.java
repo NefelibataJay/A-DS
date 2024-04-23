@@ -13,8 +13,7 @@ public class Solution35 {
         int left = 0, right = n - 1, mid = 0;
 
         while (left <= right) {
-            mid = (left + right) / 2;
-
+            mid = ((right - left) >> 1) + left;
             if (nums[mid] > target) {
                 right = mid - 1;
             } else if (nums[mid] < target) {
@@ -24,14 +23,14 @@ public class Solution35 {
             }
         }
 
-        return nums[mid] > target ? mid + 1 : mid;
+        return left;
     }
 
     public int searchInsert2(int[] nums, int target) {
         int n = nums.length;
         int left = 0, right = n - 1, ans = n;
         while (left <= right) {
-            int mid = ((right - left) >> 1) + left;
+            int mid = ((right - left) >> 1) + left; // 防止加法溢出((l+r)计算结果 可能 大于INT_MAX)
             if (target <= nums[mid]) {
                 ans = mid;
                 right = mid - 1;
