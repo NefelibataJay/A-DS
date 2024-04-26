@@ -53,6 +53,22 @@ public class Solution139 {
         return dp[n];
     }
 
+    public boolean wordBreak2(String s, List<String> wordDict) {
+        int length = s.length();
+        boolean[] dp = new boolean[length + 1];
+        dp[0] = true;
+        for (int i = 1; i <= length; i++) {
+            for (String word : wordDict) {
+                int len = word.length();
+                if (i - len >= 0 && dp[i - len] && word.equals(s.substring(i - len, i))) {
+                    dp[i] = true;
+                    break;
+                }
+            }
+        }
+        return dp[length];
+    }
+
     public static void main(String[] args) {
         String s = "leetcode";
         String[] words = { "leet", "code" };
