@@ -30,4 +30,26 @@ public class Solution42 {
 
         return rain;
     }
+
+    public static int trap2(int[] height) {
+        int n = height.length;
+        if (n < 3)
+            return 0;
+
+        int rain = 0;
+        int left = 0, right = n - 1, leftMax = 0, rightMax = 0;
+
+        while (left < right) {
+            leftMax = Math.max(leftMax, height[left]);
+            rightMax = Math.max(rightMax, height[right]);
+
+            if (height[right] > height[left]) {
+                rain += leftMax - height[left++];
+            } else {
+                rain += rightMax - height[right--];
+            }
+        }
+
+        return rain;
+    }
 }
