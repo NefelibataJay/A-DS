@@ -1,7 +1,7 @@
 package leetcode_hot_100.linked;
 
 public class Solution106 {
-    public ListNode reverseList(ListNode head) {
+    public ListNode reverseList2(ListNode head) {
         if (head == null || head.next == null)
             return head;
 
