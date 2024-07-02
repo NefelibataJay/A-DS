@@ -1,7 +1,5 @@
 package leetcode_hot_100.arr;
 
-import java.util.Arrays;
-
 public class Solution189 {
     public static void main(String[] args) {
         Solution189 solution189 = new Solution189();
