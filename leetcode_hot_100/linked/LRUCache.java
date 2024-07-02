@@ -1,6 +1,7 @@
 package leetcode_hot_100.linked;
 
-import java.util.LinkedHashMap;;
+import java.util.LinkedHashMap;
+import java.util.Map;;
 
 public class LRUCache extends LinkedHashMap<Integer, Integer> {
     private int capacity;
