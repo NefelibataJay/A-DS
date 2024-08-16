@@ -26,7 +26,7 @@ public class MyTrie {
 
     Node root;
 
-    public Trie() {
+    public MyTrie() {
         root = new Node();
     }
 
