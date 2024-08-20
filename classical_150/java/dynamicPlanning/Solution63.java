@@ -35,10 +35,9 @@ class Solution63 {
         for (int i = 0; i < n; i++) {
             dp[0] = obstacleGrid[i][0] == 1 ? 0 : dp[0];
             for (int j = 1; j < m; j++) {
-                    dp[j] = (dp[j] + dp[j - 1]) * (1-obstacleGrid[i][j]);
-                }
+                dp[j] = (dp[j] + dp[j - 1]) * (1 - obstacleGrid[i][j]);
             }
         }
-
-    return dp[m-1];
-}}
+        return dp[m - 1];
+    }
+}
