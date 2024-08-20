@@ -1,6 +1,12 @@
 package leetcode_hot_100.binary;
 
 class Solution {
+    public static void main(String[] args) {
+        Solution solution = new Solution();
+        int res = solution.lowerBound(new int[] { 1, 2, 3, 3, 4, 4, 6, 6, 7 }, 6);
+        System.out.println(res);
+    }
+
     // 二分搜索
     public int[] searchRange(int[] nums, int target) {
         int start = lowerBound(nums, target); // 选择其中一种写法即可
