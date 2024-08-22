@@ -1,8 +1,7 @@
 package daybyday.java;
 
-import java.util.*;
-
 public class Solution3133 {
+    // 数组最后一个元素的最小值
     public static void main(String[] args) {
         // System.out.println(2 & 5 & 6);
         Solution3133 solution3133 = new Solution3133();
