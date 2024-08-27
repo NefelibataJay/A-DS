@@ -5,7 +5,7 @@ import java.util.*;
 public class Solution84 {
 
     public static void main(String[] args) {
-
+        // 柱状图中最大的矩形
     }
 
     public int largestRectangleArea1(int[] heights) {
@@ -38,6 +38,8 @@ public class Solution84 {
     }
 
     public int largestRectangleArea3(int[] heights) {
+        // 进栈前弹出的都是左边比自己大的→确定左边界；
+        // 出栈时必定是右边第一次遇到比自己小的→确定右边界
         int n = heights.length;
         int res = 0;
         Deque<Integer> stack = new LinkedList<>();
