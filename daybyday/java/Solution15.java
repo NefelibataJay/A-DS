@@ -9,11 +9,11 @@ import java.util.List;
  */
 public class Solution15 {
     public static void main(String[] args) {
-        int[] nums = { 0, 0, 0 };
+        int[] nums = { 0, 0, 0, 0 };
         threeSum(nums);
     }
 
-    public static List<List<Integer>> threeSum(int[] nums) {
+    public List<List<Integer>> threeSum(int[] nums) {
         // nums 无序
         int n = nums.length;
         List<List<Integer>> answer = new ArrayList<>();
@@ -31,9 +31,9 @@ public class Solution15 {
             int j = i + 1;
             int k = n - 1;
             while (k > j) {
-                if (k > j && nums[i] + nums[j] + nums[k] > 0)
+                if (nums[i] + nums[j] + nums[k] > 0)
                     k--;
-                else if (j < k && nums[i] + nums[j] + nums[k] < 0)
+                else if (nums[i] + nums[j] + nums[k] < 0)
                     j++;
                 else {
                     List<Integer> curRes = new ArrayList<>();
@@ -43,11 +43,13 @@ public class Solution15 {
                     answer.add(curRes);
 
                     j++;
-                    while (j < k && nums[j] == nums[j - 1])
-                        continue;
+                    while (j < k && nums[j] == nums[j - 1]) {
+                        j++;
+                    }
                     k--;
-                    while (k > j && nums[k] == nums[k + 1])
-                        continue;
+                    while (k > j && nums[k] == nums[k + 1]) {
+                        k--;
+                    }
                 }
             }
         }
