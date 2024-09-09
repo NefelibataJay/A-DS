@@ -2,7 +2,7 @@ package Test;
 
 class Parent {
     int num = 10;
-    int n1;
+    protected int n1;
 
     public Parent() {
         System.out.println("父类初始化");
@@ -46,9 +46,12 @@ class Son extends Parent {
 
 public class Inherit {
     public static void main(String[] args) {
-        Parent p = new Son(); // 先调用父类的初始化再调用子类的初始化
-        System.out.println(p.num); // 父类的属性
-        p.printNum(); // 如果子类重写了该方法，调用子类的，反之调用父类的
-        System.out.println(p.num);
+        Parent p = new Parent();
+        Son s = (Son) p;
+
+        // Parent p = new Son(); // 先调用父类的初始化再调用子类的初始化
+        // System.out.println(p.num); // 父类的属性
+        // p.printNum(); // 如果子类重写了该方法，调用子类的，反之调用父类的
+        // System.out.println(p.num);
     }
 }
