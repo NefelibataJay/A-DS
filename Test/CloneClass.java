@@ -7,7 +7,7 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
 
-public class MyClass implements Serializable, Cloneable {
+public class CloneClass implements Serializable, Cloneable {
     /*
      * 父类静态成员变量、静态代码块（如果有）
      * 子类静态成员变量、静态代码块（如果有）
@@ -20,12 +20,12 @@ public class MyClass implements Serializable, Cloneable {
 
     @Override
     protected Object clone() throws CloneNotSupportedException {
-        MyClass cloned = (MyClass) super.clone();
+        CloneClass cloned = (CloneClass) super.clone();
         cloned.nestedClass = (NestedClass) nestedClass.clone();
         return cloned;
     }
 
-    public MyClass deepCopy() {
+    public CloneClass deepCopy() {
         try {
             ByteArrayOutputStream bos = new ByteArrayOutputStream();
             ObjectOutputStream oos = new ObjectOutputStream(bos);
@@ -35,7 +35,7 @@ public class MyClass implements Serializable, Cloneable {
 
             ByteArrayInputStream bis = new ByteArrayInputStream(bos.toByteArray());
             ObjectInputStream ois = new ObjectInputStream(bis);
-            return (MyClass) ois.readObject();
+            return (CloneClass) ois.readObject();
         } catch (IOException | ClassNotFoundException e) {
             e.printStackTrace();
             return null;
